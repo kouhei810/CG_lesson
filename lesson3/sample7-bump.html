@@ -51,7 +51,9 @@
         var textureLoader = new THREE.TextureLoader();  
         var texture = textureLoader.load("stone.jpg");
         var mat = new THREE.MeshPhongMaterial();
+        var mat1 = new THREE.MeshPhongMaterial();
         mat.map = texture;
+        mat1.map = texture;
   
         // バンプマップ読み込み
         var bump = textureLoader.load("stone-bump.jpg");
@@ -63,7 +65,10 @@
         //var material = new THREE.MeshPhongMaterial({ color: 0xffffff });
         //var box = new THREE.Mesh(geometry, material);
         var box = new THREE.Mesh(geometry, mat);
-        box.position.set(0,0,0); //位置を指定
+        box.position.set(-1,0,0); //位置を指定
+        scene.add(box);   // シーンに追加
+        var box1 = new THREE.Mesh(geometry, mat1);
+        box.position.set(1,0,0); //位置を指定
         scene.add(box);   // シーンに追加
 
         update();
@@ -77,6 +82,8 @@
            // 箱を回転させる
           box.rotation.x += 0.01;
           box.rotation.y += 0.01;
+          box1.rotation.x += 0.01;
+          box1.rotation.y += 0.01;
 
         }
       }
